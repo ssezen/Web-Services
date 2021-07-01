@@ -1,0 +1,184 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "",
+    "version": "1.0.0",
+    "title": "API",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+
+  "schemes": ["http"],
+  "host": "localhost:3080",
+  "basePath": "/api",
+  "paths": {
+    "/fibonacci": {
+      "post": {
+        "summary": "Calculation Fibonacci",
+        "description": "Calculation Fibonacci",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "n",
+            "description": "enter a number n",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fibonacci": {
+                  "type": "object",
+                  "$ref": "#/definitions/n"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/ackermann": {
+      "post": {
+        "summary": "Calculation Ackermann",
+        "description": "Calculation Ackermann",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "m,n",
+            "description": "enter two numbers m and n",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ackermann": {
+                  "type": "object",
+                  "$ref": "#/definitions/m_n"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/factorial": {
+      "post": {
+        "summary": "Calculation Factorial",
+        "description": "Calculation Factorial",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "n",
+            "description": "enter a number n - (n is non-negative)",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "factorial": {
+                  "type": "object",
+                  "$ref": "#/definitions/n"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "todosResponse": {
+      "type": "object",
+      "properties": {
+        "fibonacci result": {
+          "type": "string"
+        }
+      }
+    },
+    "n": {
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "integer"
+        }
+      }
+    },
+    "m_n": {
+      "type": "object",
+      "properties": {
+        "m": {
+          "type": "integer"
+        },
+        "n": {
+          "type": "integer"
+        }
+      }
+    },
+    "InvalidResponse": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
